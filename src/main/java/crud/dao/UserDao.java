@@ -1,6 +1,6 @@
-package dao;
+package crud.dao;
 
-import model.User;
+import crud.model.User;
 
 import java.util.List;
 

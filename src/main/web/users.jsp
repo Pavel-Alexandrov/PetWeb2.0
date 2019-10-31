@@ -43,9 +43,7 @@
             </td>
         </tr>
     </c:forEach>
-</table>
-<p><form action="/add.jsp">
-    <button name="newUser" value="${newUser}">Добавить пользователя:</button>
+    ${newUser}">Добавить пользователя:</button>
 </form></p>
 </body>
 </html>

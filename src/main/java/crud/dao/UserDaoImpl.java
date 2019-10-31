@@ -1,25 +1,25 @@
-package dao;
+package crud.dao;
 
-import model.User;
+import crud.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
+@Transactional
 public class UserDaoImpl implements UserDao {
 
+    @Autowired
     private SessionFactory sessionFactory;
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
 
     @Override
     public List<User> getAllUsers() {
         Session session = sessionFactory.getCurrentSession();
-        List<User> userList = (List<User>) session.createQuery("from Users");
+        List<User> userList = (List<User>) session.createQuery("from Users").list();
         return userList;
     }
 

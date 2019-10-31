@@ -1,4 +1,4 @@
-package springMVC.config;
+package crud.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
