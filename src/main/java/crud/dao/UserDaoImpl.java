@@ -1,53 +1,51 @@
 package crud.dao;
 
 import crud.model.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
 @Repository
-@Transactional
 public class UserDaoImpl implements UserDao {
 
     @Autowired
-    private SessionFactory sessionFactory;
+    public EntityManagerFactory entityManagerFactory;
 
     @Override
     public List<User> getAllUsers() {
-        Session session = sessionFactory.getCurrentSession();
-        List<User> userList = (List<User>) session.createQuery("from Users").list();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        List<User> userList = entityManager.createQuery("from User u").getResultList();
         return userList;
     }
 
     @Override
     public void addUser(User user) {
-        Session session = sessionFactory.getCurrentSession();
-        session.persist(user);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.persist(user);
     }
 
     @Override
     public void updateUser(User user) {
-        Session session = sessionFactory.getCurrentSession();
-        session.update(user);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.merge(user);
     }
 
     @Override
     public void deleteUser(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        User user = session.load(User.class, id);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        User user = entityManager.find(User.class, id);
         if (user != null) {
-            session.delete(user);
+            entityManager.remove(user);
         }
     }
 
     @Override
     public User getUserById(int id) {
-        Session session = sessionFactory.getCurrentSession();
-        User user = session.load(User.class, id);
-        return user;
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        return entityManager.find(User.class, id);
     }
 }

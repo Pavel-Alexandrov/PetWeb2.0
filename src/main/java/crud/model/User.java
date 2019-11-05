@@ -1,10 +1,12 @@
 package crud.model;
 
+import javax.annotation.Resource;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
+@Resource
 @Table(name = "users")
 public class User implements Serializable {
 

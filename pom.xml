@@ -7,8 +7,16 @@
     <groupId>2.1</groupId>
     <artifactId>PreProject 2.1</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <version>9.0.24</version>
+            <scope>required</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>

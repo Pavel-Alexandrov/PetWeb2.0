@@ -13,15 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
     @Autowired
-    private UserService userService;
+    public UserService userService;
 
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String userList(Model model) {
         model.addAttribute("newUser", new User());
         model.addAttribute("userList", userService.getAllUsers());
 
         return "users";
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String test() {
+        return "redirect:/users";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
