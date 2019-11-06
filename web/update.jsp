@@ -14,6 +14,11 @@
     <p>Password</p>
     <p><input type="text" name="password"></p>
     <c:set target="${user}" property="password" value="${password}"/>
+
+    <input hidden="hidden" type="text" name="id" value="${user.id}">
+    <c:set target="${user}" property="id" value="${id}"/>
+    <input hidden="hidden" type="text" name="login" value="${user.login}">
+    <c:set target="${user}" property="login" value="${login}"/>
     <p><input type="submit"></p>
 </form>
 </body>

@@ -25,13 +25,19 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void addUser(User user) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
         entityManager.persist(user);
+        entityManager.flush();
+        entityManager.getTransaction().commit();
     }
 
     @Override
     public void updateUser(User user) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
         entityManager.merge(user);
+        entityManager.flush();
+        entityManager.getTransaction().commit();
     }
 
     @Override
@@ -39,7 +45,10 @@ public class UserDaoImpl implements UserDao {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         User user = entityManager.find(User.class, id);
         if (user != null) {
+            entityManager.getTransaction().begin();
             entityManager.remove(user);
+            entityManager.flush();
+            entityManager.getTransaction().commit();
         }
     }
 

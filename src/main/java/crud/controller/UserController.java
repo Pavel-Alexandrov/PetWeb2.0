@@ -54,7 +54,7 @@ public class UserController {
     public String updateUserGet(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.getUserById(id));
 
-        return "update";
+        return "../update";   //что за дичь тут твориться, почему он лезет по url update/update.jsp, а не по update.jsp? прищлось добавить ../
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)

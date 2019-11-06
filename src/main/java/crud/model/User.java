@@ -56,6 +56,22 @@ public class User implements Serializable {
         return password;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return ("id: "  + getId() + "     login: " + getLogin() + "     name: " + getName() + "     password: " + getPassword());
